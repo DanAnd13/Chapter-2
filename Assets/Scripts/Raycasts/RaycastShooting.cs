@@ -6,6 +6,16 @@ using UnityEngine;
 public class RaycastShooting : MonoBehaviour
 {
     public float rayDistance = 100f;
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 rayOrigin = Camera.main.transform.position;
+            Vector3 rayDirection = Camera.main.transform.forward;
+
+            DrawRaycast(rayOrigin, rayDirection);
+        }
+    }
     void DrawRaycast(Vector3 rayOrigin, Vector3 rayDirection)
     {
         if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hitInfo, rayDistance))
@@ -26,16 +36,6 @@ public class RaycastShooting : MonoBehaviour
         if (rb != null)
         {
             rb.AddForce(-hitInfo.normal * 10f, ForceMode.Impulse);
-        }
-    }
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 rayOrigin = Camera.main.transform.position;
-            Vector3 rayDirection = Camera.main.transform.forward;
-
-            DrawRaycast(rayOrigin, rayDirection);
         }
     }
 }

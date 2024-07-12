@@ -6,6 +6,17 @@ using UnityEngine;
 public class CubePassThroughCounter : MonoBehaviour
 {
     int throughCounter;
+    void Start()
+    {
+        throughCounter = 0;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (isSphereLayer(other))
+        {
+            CountOfPassThrough();
+        }
+    }
     bool isSphereLayer(Collider sphereObject)
     {
         if (sphereObject.gameObject.layer == LayerMask.NameToLayer("Sphere"))
@@ -21,17 +32,5 @@ public class CubePassThroughCounter : MonoBehaviour
     {
         throughCounter++;
         Debug.Log("Count of pass through: " + throughCounter);
-    }
-    void Start()
-    {
-        throughCounter = 0;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (isSphereLayer(other))
-        {
-            CountOfPassThrough();
-        }
     }
 }

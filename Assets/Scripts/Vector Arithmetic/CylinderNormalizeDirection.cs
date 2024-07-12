@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class CylinderNormalizeDirection : MonoBehaviour
 {
-    float speed = 2.0f;
     public Vector3 direction = new Vector3(1, 0, 0);
-    void CylinderMovement()
-    {
-        Vector3 movement = direction * speed * Time.deltaTime;
-        transform.Translate(movement, Space.World);
-    }
-
+    float speed = 2.0f;
     void Start()
     {
         direction = direction.normalized;
     }
-
     void Update()
     {
         CylinderMovement();
+    }
+    void CylinderMovement()
+    {
+        Vector3 movement = direction * speed * Time.deltaTime;
+        transform.Translate(movement, Space.World);
     }
 }

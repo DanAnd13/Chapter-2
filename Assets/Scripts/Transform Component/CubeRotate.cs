@@ -7,7 +7,17 @@ public class CubeRotate : MonoBehaviour
     public Vector3 initialEulerAngles = new Vector3(0, 0, 0);
 
     private float rotationSpeed = 360.0f;
+    void Start()
+    {
+        transform.rotation = Quaternion.Euler(initialEulerAngles);
+    }
+    void Update()
+    {
+        float angle = rotationSpeed * Time.deltaTime;
 
+        QuaternionsRotation (angle);
+        //EulerAngleRotation (angle);
+    }
     void QuaternionsRotation(float angle)
     {
         Quaternion rotation = Quaternion.Euler(0, angle, 0);
@@ -17,18 +27,5 @@ public class CubeRotate : MonoBehaviour
     {
         Vector3 rotation = new Vector3(0, angle, 0);
         transform.eulerAngles += rotation;
-    }
-
-    void Start()
-    {
-        transform.rotation = Quaternion.Euler(initialEulerAngles);
-    }
-
-    void Update()
-    {
-        float angle = rotationSpeed * Time.deltaTime;
-
-        QuaternionsRotation (angle);
-        //EulerAngleRotation (angle);
     }
 }
