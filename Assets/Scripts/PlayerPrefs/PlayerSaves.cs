@@ -9,7 +9,10 @@ public class PlayerSaves : MonoBehaviour
     private void Start()
     {
         if (PlayerPrefs.HasKey("PosX"))
+        {
             loadPosition();
+        }
+        Debug.Log(Application.persistentDataPath);
     }
     private void OnDestroy()
     {
